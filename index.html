@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ecece4">
+  <title>Bus Factor Radar: dependency maintenance signals</title>
+  <meta name="description" content="A local-first dependency maintainer and freshness check for package.json, go.mod, and requirements.txt.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a href="#top" class="brand"><span class="brand-mark">BF</span><span>BUS FACTOR <b>RADAR</b><small>DEPENDENCY MAINTENANCE CHECK</small></span></a><div class="top-right"><span class="privacy-dot"></span> MANIFEST STAYS ON YOUR DEVICE <a href="README.md">METHOD ↗</a></div></header>
+<main id="top">
+  <section class="intro-grid">
+    <div class="intro"><div class="eyebrow"><span>FIELD NOTE 01</span><i></i> SUPPLY-CHAIN VISIBILITY</div><h1>See who maintains<br>your <em>dependencies.</em></h1><p>Choose a dependency manifest to see public maintainer, release and repository activity signals. The report shows evidence and gaps, not a verdict.</p><div class="truth-line"><span class="truth-icon">!</span><span>A manifest names packages. It does <strong>not</strong> reveal every maintainer. We show what public metadata can support, and mark the rest unknown.</span></div></div>
+    <div class="radar-art"><div class="radar-label"><span>MAINTAINER VISIBILITY</span><span>PUBLIC DATA</span></div><div class="radar-circle"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div><div class="radar-sweep"></div><i class="blip b1"></i><i class="blip b2"></i><i class="blip b3"></i><span class="center-mark">BF</span></div><div class="radar-foot"><span>AUTHOR COUNT IS NOT THE WHOLE STORY</span><span>CHECK BEFORE YOU SHARE</span></div></div>
+  </section>
+  <section class="scanner" aria-labelledby="scan-heading">
+    <div class="section-head"><div><div class="eyebrow"><span>01</span><i></i> LOAD A MANIFEST</div><h2 id="scan-heading">Start with the dependency list.</h2></div><span class="file-types">package.json&nbsp; / &nbsp;go.mod&nbsp; / &nbsp;requirements.txt</span></div>
+    <div class="input-grid">
+      <label class="drop-zone" id="drop-zone" for="manifest-file"><input id="manifest-file" type="file" accept=".json,.mod,.txt,application/json,text/plain"><span class="upload-icon">↥</span><strong>Drop a file here, or <u>browse</u></strong><small>Read locally · no manifest upload · public package names are queried only after you start the scan.</small><span class="file-chip" id="file-name">NO FILE SELECTED</span></label>
+      <div class="paste-side"><label for="manifest-text">OR PASTE THE FILE CONTENT</label><textarea id="manifest-text" spellcheck="false" placeholder='{"dependencies":{"example":"^1.2.0"}}'></textarea><div class="paste-foot"><span id="parse-hint">Supports npm, Go modules, and pip requirements.</span><button id="load-sample" type="button">LOAD SAMPLE</button></div></div>
+    </div>
+    <div class="scan-controls"><div class="scan-consent"><span class="checkbox-mark">✓</span><span>When I start, query public registries for package metadata and public repository activity. <button type="button" id="privacy-details">What leaves my browser?</button></span></div><button id="scan-button" class="scan-button" type="button" disabled><span>SCAN THE STACK</span><b>↗</b></button></div>
+    <p class="input-error" id="input-error" role="status" aria-live="polite"></p>
+  </section>
+  <section class="results hidden" id="results">
+    <div class="results-head"><div><div class="eyebrow"><span>02</span><i></i> RADAR REPORT</div><h2 id="result-title">Dependency ownership signals</h2><p id="result-subtitle"></p></div><div class="results-actions"><button id="download-card" type="button">↓ SHARE CARD</button><button id="new-scan" type="button">NEW SCAN</button></div></div>
+    <div class="score-grid">
+      <article class="score-card main-score"><span class="score-label">PUBLIC MAINTENANCE SIGNAL</span><strong id="overall-score">not scored</strong><span id="overall-caption">Waiting for metadata</span><div class="score-meter"><i id="score-meter-fill"></i></div><small>Heuristic score from available public signals. Higher means more concentration/staleness indicators.</small></article>
+      <article class="stat-card"><span>DEPENDENCIES READ</span><strong id="stat-total">0</strong><small id="stat-reviewed">0 checked against public sources</small></article>
+      <article class="stat-card stat-alert"><span>SINGLE-PUBLISHER / AUTHOR SIGNALS</span><strong id="stat-single">0</strong><small>Only when registry or repo metadata identifies one</small></article>
+      <article class="stat-card"><span>STALE ACTIVITY</span><strong id="stat-stale">0</strong><small>No recent visible release or repository commit</small></article>
+    </div>
+    <div class="report-grid"><div class="dependency-panel"><div class="panel-title"><div><span class="eyebrow"><span>03</span><i></i> DEPENDENCY FILE</span><h3>What the public data says</h3></div><span class="scan-progress" id="scan-progress">0 / 0</span></div><div class="dep-list" id="dep-list"></div></div><aside class="share-panel"><div class="share-top"><span>SHAREABLE SUMMARY</span><span class="share-stamp">LOCAL</span></div><canvas id="share-canvas" width="1200" height="630" aria-label="Dependency risk share card"></canvas><p>Share only the summary you want. The card contains package counts and risk signals, not your manifest or private project files.</p></aside></div>
+    <div class="limits-note"><b>READ THE SIGNAL, NOT THE HEADLINE.</b><span>Contributor lists are partial. Registry “maintainer” fields may be stale or descriptive. Go modules without a public GitHub URL may have no maintainer data. Unknown means unknown, not safe or risky.</span></div>
+  </section>
+  <section class="method-grid"><div class="method-intro"><div class="eyebrow"><span>METHOD</span><i></i> WHAT WE CAN MEASURE</div><h2>Method, not<br><em>a verdict.</em></h2></div><div class="method-card"><span>01 / OWNERSHIP</span><h3>Look for concentration.</h3><p>Registry publisher/contact counts and contributors visible in a repository’s latest 100 commits. These are different signals, not interchangeable identities.</p></div><div class="method-card"><span>02 / FRESHNESS</span><h3>Check the last signal.</h3><p>Latest release or visible commit date. A quiet project can still be healthy; age is a prompt to review, not a verdict.</p></div><div class="method-card"><span>03 / BOUNDARIES</span><h3>Show the blind spots.</h3><p>Files stay local. Only package names and public repository URLs are sent to public registries or GitHub after you choose to scan.</p></div></section>
+</main>
+<footer><span>BUS FACTOR RADAR <b>·</b> DEPENDENCY MAINTENANCE SIGNALS</span><span>NO LOGIN · NO BACKEND · NO MANIFEST UPLOAD</span></footer>
+<div class="modal-backdrop hidden" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title"><div class="modal"><button class="modal-close" id="privacy-close" aria-label="Close">×</button><div class="eyebrow"><span>DATA BOUNDARY</span><i></i> BEFORE YOU SCAN</div><h2 id="privacy-title">Your file stays here.</h2><p>Parsing happens in this tab. When you press Scan, the app sends package names to npm Registry, PyPI, or the Go module proxy to look up public metadata. If a package points to GitHub, public repository and recent commit metadata may be requested from api.github.com.</p><p>No manifest content, source code, tokens, or credentials are uploaded. Public services see ordinary requests from your browser. GitHub's unauthenticated REST API is rate-limited per originating IP; all public services apply their own rate limits and privacy policies.</p><button class="modal-ok" id="privacy-ok">UNDERSTOOD</button></div></div>
+<script src="src/scanner.js"></script><script src="src/app.js"></script>
+</body></html>
