@@ -4,7 +4,11 @@
 
 A local-first dependency analyzer for `package.json`, `go.mod`, and pip `requirements.txt`. It surfaces public signals about maintainer/author counts, repository activity, and release age. The manifest is parsed in the browser and is not uploaded to a server.
 
-## Run
+## Open the app
+
+[Launch Bus Factor Radar in your browser](https://hilsetapp.github.io/bus-factor-radar/)
+
+## Run locally
 
 Open `index.html` in a browser, or start a simple local HTTP server:
 
